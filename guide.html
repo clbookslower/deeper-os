@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>1인 기업 창작자를 위한 deeper OS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Nanum+Gothic:wght@400;700;800&family=Nanum+Myeongjo:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ivory:#F6F1E7; --ivory-2:#EFE8D9; --panel:#ECE4D3;
+    --ink:#211C17; --ink-soft:#4A4138; --muted:#8A7F6E;
+    --red:#CC3333; --line:rgba(33,28,23,.14);
+    --serif:'Nanum Myeongjo', serif; --sans:'Nanum Gothic', sans-serif; --display:'Cormorant Garamond', serif;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0; background:var(--ivory); color:var(--ink); font-family:var(--serif); line-height:1.9; font-size:17px; -webkit-font-smoothing:antialiased; background-image:radial-gradient(rgba(33,28,23,.025) 1px, transparent 1px); background-size:4px 4px;}
+  .wrap{max-width:720px; margin:0 auto; padding:0 28px;}
+  nav{position:sticky; top:0; z-index:50; background:rgba(246,241,231,.9); backdrop-filter:blur(8px); border-bottom:1px solid var(--line);}
+  nav .wrap{display:flex; gap:17px; flex-wrap:wrap; padding:14px 28px; font-family:var(--sans); font-size:11px; letter-spacing:.09em;}
+  nav a{color:var(--muted); text-decoration:none; transition:color .2s;}
+  nav a:hover{color:var(--red);}
+  header.hero{padding:96px 0 64px; border-bottom:1px solid var(--line);}
+  .kicker{font-family:var(--sans); font-size:12px; letter-spacing:.28em; text-transform:uppercase; color:var(--red); margin-bottom:26px;}
+  h1{font-family:var(--serif); font-weight:800; font-size:clamp(28px,5vw,44px); line-height:1.3; letter-spacing:-.02em; margin:0 0 16px;}
+  .logo{font-family:var(--display); font-weight:600; font-style:italic; font-size:clamp(36px,7vw,64px); color:var(--red); line-height:1;}
+  .hero .sub{font-family:var(--sans); font-size:13px; letter-spacing:.1em; color:var(--muted); margin:30px 0 38px;}
+  .lede{font-size:17.5px; line-height:1.95; max-width:40em;}
+  .lede p{margin:0 0 1.1em;}
+  section{padding:70px 0; border-bottom:1px solid var(--line);}
+  .sec-kicker{font-family:var(--sans); font-size:11.5px; letter-spacing:.22em; text-transform:uppercase; color:var(--red); margin-bottom:14px;}
+  h2{font-family:var(--serif); font-weight:800; font-size:clamp(24px,4vw,32px); line-height:1.3; letter-spacing:-.02em; margin:0 0 24px;}
+  h3{font-family:var(--serif); font-weight:800; font-size:19px; margin:38px 0 12px;}
+  h4{font-family:var(--sans); font-size:13px; font-weight:800; letter-spacing:.02em; margin:26px 0 8px; color:var(--red);}
+  p{margin:0 0 1.1em;} strong{font-weight:800;} .em{color:var(--red); font-weight:800;}
+  .note{border-left:2px solid var(--red); padding:4px 0 4px 22px; margin:24px 0; color:var(--ink-soft); font-size:15.5px; line-height:1.85;}
+  .note .lab{display:block; font-family:var(--sans); font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--red); margin-bottom:8px;}
+  .check{display:flex; gap:12px; align-items:baseline; margin:18px 0; font-size:15.5px;}
+  .check .tag{flex:none; font-family:var(--sans); font-size:10.5px; font-weight:800; letter-spacing:.12em; color:#fff; background:var(--red); padding:3px 8px; border-radius:2px; text-transform:uppercase; transform:translateY(-1px);}
+  .stepnum{font-family:var(--display); font-size:14px; letter-spacing:.16em; color:var(--red); text-transform:uppercase; margin-bottom:4px;}
+  .block{position:relative; margin:16px 0;}
+  .block .copybtn{position:absolute; top:9px; right:9px; font-family:var(--sans); font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); background:transparent; border:1px solid var(--line); border-radius:3px; padding:4px 9px; cursor:pointer; transition:all .18s;}
+  .block .copybtn:hover{color:var(--red); border-color:var(--red);}
+  pre.cmd{background:#23201B; color:#EFE8D9; font-family:'SF Mono',ui-monospace,Menlo,Consolas,monospace; font-size:13.5px; line-height:1.7; padding:18px 20px; border-radius:6px; overflow-x:auto; margin:0;}
+  pre.cmd .c{color:#C9A86A;}
+  .ref{font-family:var(--sans); font-size:12px; letter-spacing:.04em; color:var(--muted); margin:8px 2px 0;}
+  table{width:100%; border-collapse:collapse; margin:22px 0; font-size:14.5px;}
+  th,td{text-align:left; padding:12px; border-bottom:1px solid var(--line); vertical-align:top;}
+  th{font-family:var(--sans); font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); font-weight:700;}
+  td .lab{font-family:var(--sans); font-weight:700; font-size:13.5px;}
+  .tree{background:var(--ivory-2); border:1px solid var(--line); border-radius:6px; padding:22px 24px; font-family:'SF Mono',ui-monospace,Menlo,Consolas,monospace; font-size:12.5px; line-height:1.95; white-space:pre; overflow-x:auto; margin:18px 0;}
+  .tree .dim{color:var(--muted);} .tree .hot{color:var(--red);} .tree .lv{color:#7E8A6A;}
+  .arrow{text-align:center; font-family:var(--sans); font-size:12px; letter-spacing:.1em; color:var(--muted); margin:6px 0;}
+  .layers{display:grid; gap:12px; margin:24px 0;}
+  .layer{border:1px solid var(--line); border-left:3px solid var(--red); border-radius:6px; padding:16px 20px; background:var(--ivory-2);}
+  .layer h5{font-family:var(--sans); font-size:12px; letter-spacing:.08em; margin:0 0 6px; color:var(--ink);}
+  .layer p{font-size:14.5px; margin:0; color:var(--ink-soft);}
+  .summary{background:var(--red); color:#fff; border:none; text-align:center; padding:60px 0;}
+  .summary p{font-family:var(--serif); font-weight:700; font-size:clamp(18px,3vw,23px); line-height:1.6; max-width:26em; margin:0 auto;}
+  footer{padding:56px 0 84px; text-align:center; font-family:var(--sans); font-size:11.5px; letter-spacing:.18em; text-transform:uppercase; color:var(--muted);}
+  .reveal{opacity:0; transform:translateY(12px); animation:rise .8s cubic-bezier(.2,.7,.2,1) forwards;}
+  @keyframes rise{to{opacity:1; transform:none;}}
+</style>
+</head>
+<body>
+
+<nav><div class="wrap">
+  <a href="#why">왜</a>
+  <a href="#paths">연결 방식</a>
+  <a href="#storage">저장 구조</a>
+  <a href="#install">설치</a>
+  <a href="#parts">구성·에이전트</a>
+  <a href="#usage">쓰는 법</a>
+  <a href="#concept">씨앗</a>
+  <a href="#publish">발행</a>
+</div></nav>
+
+<header class="hero"><div class="wrap reveal">
+  <div class="kicker">Deeper Unbranding Salon</div>
+  <h1>1인 기업 창작자를 위한</h1>
+  <div class="logo">deeper OS</div>
+  <div class="sub">설치 · 연결 · 운영 가이드 — 2026</div>
+  <div class="lede">
+    <p>흩어진 생각을 파일로 꺼내 쌓고, 그것을 다시 콘텐츠와 상품으로 길어 올리는 시스템입니다. 옵시디언이 저장소가 되고, 클로드 코드가 그 안에서 읽고 씁니다.</p>
+    <p>이 가이드는 설치부터 첫 발행까지 전 과정을 안내합니다. 한 달간 사용한 볼트와 폴더 구조는 그대로 이어 쓰며, deeper OS는 플러그인 하나로 설치됩니다.</p>
+  </div>
+</div></header>
+
+<!-- why -->
+<section id="why"><div class="wrap">
+  <div class="sec-kicker">Why It Matters</div>
+  <h2>왜 이것이 자산이 되는가</h2>
+  <p>머릿속 생각은 붙잡지 않으면 사라집니다. deeper OS는 그 생각을 파일로 꺼내(외재화) 한곳에 쌓고, 서로 잇습니다. 꺼내 둔 생각은 흩어지지 않고, 새 생각과 만나 가치가 불어납니다. <span class="em">시간이 복리로 일합니다.</span></p>
+  <p>차이가 하나 더 있습니다. AI 채팅에만 기대면, 대화가 끝나는 순간 쌓은 것도 함께 사라집니다. deeper OS는 모든 것을 내 볼트에 남기므로, 모델이 바뀌어도 자산은 내 것으로 남습니다. <strong>AI에 종속되지 않고, 내 맥락을 소유하는 구조입니다.</strong></p>
+  <p>이것을 <span class="em">컨텍스트 엔지니어링</span>이라 부릅니다. AI에게 매번 나를 설명하는 대신, 내 맥락 — 원천·씨앗·의미의 축·규칙 — 을 한 번 구축해 두면, AI는 늘 내 맥락 위에서 일합니다. 좋은 질문을 던지는 것(프롬프트)을 넘어, AI가 일할 환경을 설계하는 일입니다.</p>
+  <div class="note"><span class="lab">그래서</span>이런 맥락 자산을 쌓는 창작자는, 시간이 갈수록 누구도 복제할 수 없는 자기만의 깊이를 갖습니다. AI 시대의 진짜 차별화는 여기서 나옵니다 — <strong>도메인 지식 × AI 역량.</strong></div>
+</div></section>
+
+<!-- paths -->
+<section id="paths"><div class="wrap">
+  <div class="sec-kicker">Two Connection Paths</div>
+  <h2>두 가지 연결 방식</h2>
+  <p>옵시디언에 Claude를 연결하는 길은 둘입니다. deeper OS는 두 번째를 표준으로 삼습니다.</p>
+  <h3>① 옵시디언 플러그인 + Anthropic API 키</h3>
+  <p>옵시디언 안에 Copilot, Smart Connections 같은 플러그인을 설치하고 API 키를 입력하는 방식입니다. 화면 안에서 가볍게 질문하기 좋지만, 스킬과 에이전트를 쓸 수 없고 사용한 토큰만큼 과금됩니다. 가벼운 질문용 보조로 두셔도 됩니다.</p>
+  <h3>② 클로드 코드 + obsidian-mcp <span class="em">(표준)</span></h3>
+  <p><strong>Claude Pro 또는 Max 구독으로 로그인</strong>하므로 별도 API 키나 토큰 과금이 없습니다. 스킬·서브에이전트·볼트 읽기·쓰기를 모두 지원합니다. deeper OS의 본 작업이 이 방식에서 구현됩니다.</p>
+</div></section>
+
+<!-- storage -->
+<section id="storage"><div class="wrap">
+  <div class="sec-kicker">Storage</div>
+  <h2>저장 구조 — 작업은 로컬, 공유는 OneDrive</h2>
+  <p>옵시디언과 OneDrive를 함께 쓰면 동기화 충돌이 생기기 쉽습니다. 평소 작업은 PC 로컬에서 하고, 공유하기로 정한 인사이트만 OneDrive로 보냅니다. 폴더는 트리비움 세 단계 — 발굴(문법) · 구조(논리) · 확산(수사) — 를 그대로 따릅니다.</p>
+  <div class="tree"><span class="dim">deeper-salon/</span>  <span class="dim">← 로컬 작업 공간</span>
+├── 01-Grammar/   <span class="lv">문법 · 씨앗을 발굴한다</span>
+│   ├── Raw-Text/   <span class="hot">원천 (원본 그대로 보관)</span>
+│   └── Insights/   <span class="hot">씨앗 (자기완결적 주장 + 키워드 링크)</span>
+├── 02-Logic/     <span class="lv">논리 · 씨앗을 비즈니스 구조로</span>
+│   ├── Reader/     이상적 독자와 고객 여정
+│   ├── Offer/      상품·오퍼·가격
+│   ├── Map/        IP 확장 지도 (글→책→강의→커뮤니티)
+│   └── Routine/    지속 가능한 창작 루틴
+├── 03-Rhetoric/  <span class="lv">수사 · 씨앗을 세상으로</span>
+│   ├── Channel/    채널 실험과 선택
+│   ├── Published/  발행한 글 아카이브
+│   └── Manifesto/  매니페스토와 다음 분기 방향
+├── CLAUDE.md       <span class="hot">지침 (설치 시 자동 생성)</span>
+└── .claude/        <span class="hot">스킬·에이전트 (플러그인이 설치)</span></div>
+  <div class="arrow">↓ 발행 결정한 씨앗만 클로드 코드가 복사</div>
+  <div class="tree"><span class="dim">OneDrive / 디퍼살롱1기-공유아카이브/</span>
+├── 그룹인사이트/             <span class="hot">그룹과 함께 보는 인사이트</span>
+└── 디퍼유레카_각자의 발견/   <span class="hot">각자의 발견 기록</span></div>
+  <div class="note"><span class="lab">왜 이렇게 나누나</span>01에서 씨앗을 모으고, 02에서 그 씨앗을 묶어 <strong>누구에게(Reader)·무엇을(Offer)·어디까지(Map)·어떻게 지속(Routine)</strong>할지 비즈니스 구조를 세우고, 03에서 채널로 내보냅니다. 지속 가능한 1인 브랜딩에 필요한 골격이 폴더로 자리 잡습니다.</div>
+  <p class="ref">기존에 OneDrive 안에 볼트를 두셨다면, 로컬로 옮기는 작업은 설치 후 클로드 코드에 요청할 수 있습니다. 폴더는 <code>/deeper-os:setup</code>이 만들어 줍니다.</p>
+</div></section>
+
+<!-- install -->
+<section id="install"><div class="wrap">
+  <div class="sec-kicker">Install</div>
+  <h2>설치 — 네 단계</h2>
+  <p class="ref">명령어는 Windows 기준입니다. 맥은 해당 단계의 별도 명령어를 사용합니다.</p>
+
+  <h3><span class="stepnum">Step 1</span><br>클로드 코드 설치 및 로그인</h3>
+  <p>데스크톱 앱의 <strong>Code</strong> 탭에서 터미널을 열고 입력합니다.</p>
+  <div class="block"><button class="copybtn">복사</button><pre class="cmd"><span class="c"># Windows (PowerShell)</span>
+irm https://claude.ai/install.ps1 | iex
+
+<span class="c"># 맥 (Terminal)</span>
+curl -fsSL https://claude.ai/install.sh | bash</pre></div>
+  <p><code>claude</code>를 입력해 실행하고, 브라우저가 열리면 Claude 계정으로 로그인합니다.</p>
+  <div class="check"><span class="tag">확인</span><span>시작 화면이 표시됩니다. 점검은 <strong>claude doctor</strong>.</span></div>
+
+  <h3><span class="stepnum">Step 2</span><br>Node.js 설치</h3>
+  <p><strong>nodejs.org</strong>에서 <strong>LTS</strong> 버전을 기본 설정으로 설치하고 확인합니다.</p>
+  <div class="block"><button class="copybtn">복사</button><pre class="cmd">node -v</pre></div>
+  <div class="check"><span class="tag">확인</span><span><strong>v20</strong> 이상이면 정상입니다.</span></div>
+
+  <h3><span class="stepnum">Step 3</span><br>옵시디언 볼트 연결</h3>
+  <p>로컬 볼트 경로를 확인한 뒤(예: <code>C:\Users\사용자\Documents\deeper-salon</code>), <code>claude</code> 터미널에 요청합니다.</p>
+  <div class="block"><button class="copybtn">복사</button><pre class="cmd">내 옵시디언 볼트를 obsidian-mcp 서버로 연결해 줘.
+경로는 C:\Users\사용자\Documents\deeper-salon 야.
+모든 작업에서 쓰게 설정하고, 확인 방법을 알려 줘.</pre></div>
+  <div class="check"><span class="tag">확인</span><span><code>/mcp</code> 입력 시 <strong>obsidian</strong>이 connected로 표시됩니다.</span></div>
+
+  <h3><span class="stepnum">Step 4</span><br>deeper OS 설치 — 깃헙 주소로</h3>
+  <p>deeper OS는 <strong>github.com/clbookslower/deeper-os</strong> 저장소에 올라가 있습니다. 아래 주소를 클로드 코드 대화창에 넣어 마켓플레이스로 등록하고 플러그인을 설치합니다. <strong>한 줄씩</strong> 차례로 입력합니다.</p>
+  <div class="block"><button class="copybtn">복사</button><pre class="cmd">/plugin marketplace add https://github.com/clbookslower/deeper-os.git
+/plugin install deeper-os@deeper-os
+/reload-plugins</pre></div>
+  <p class="ref">첫 줄이 저장소를 마켓플레이스로 등록하고, 둘째 줄이 deeper OS를 설치하며, 셋째 줄이 활성화합니다. 짧은 <code>clbookslower/deeper-os</code> 형식은 일부 환경에서 SSH로 연결을 시도해 실패하므로, 위의 <code>https://</code> 전체 주소를 사용합니다.</p>
+  <div class="check"><span class="tag">안 보이면</span><span>설치가 목록에 안 뜨면 <code>/plugin</code> 메뉴 → <strong>Marketplaces</strong> → <strong>deeper-os</strong> → <strong>Install for you (user scope)</strong> 로 설치합니다.</span></div>
+  <p>이어서 초기 세팅을 실행합니다. CLAUDE.md·폴더 구조·의미의 축을 대화로 만들어 줍니다.</p>
+  <div class="note"><span class="lab">세팅 전에 — 기존 노트는 안전합니다</span><code>/deeper-os:setup</code>은 기존 노트·폴더를 <strong>수정하거나 지우지 않습니다.</strong> 없는 폴더·파일만 새로 추가하고, 매 단계마다 확인을 받습니다. 그래도 한 달 넘게 쌓아온 볼트라면, 마음 편히 시작하시도록 <strong>세팅 전에 볼트 폴더를 통째로 한 번 복사해 백업</strong>해 두시길 권합니다. 이미 자기 구조로 정리하셨다면 폴더 생성은 건너뛰어도 됩니다.</div>
+  <div class="block"><button class="copybtn">복사</button><pre class="cmd">/deeper-os:setup</pre></div>
+  <div class="check"><span class="tag">확인</span><span>CLAUDE.md와 폴더가 생기고, 설치된 스킬 목록이 안내됩니다.</span></div>
+</div></section>
+
+<!-- parts -->
+<section id="parts"><div class="wrap">
+  <div class="sec-kicker">What's Inside</div>
+  <h2>구성과 에이전트 설정</h2>
+  <p>deeper OS는 네 층으로 작동합니다. 공통 방법은 살롱이 제공하고, 개인화는 각자 설계합니다.</p>
+  <div class="layers">
+    <div class="layer"><h5>CLAUDE.md — 항상 켜진 맥락</h5><p>소개·작성 규칙·메인 에이전트 이름·의미의 축 참조. 작업할 때마다 클로드 코드가 먼저 읽습니다.</p></div>
+    <div class="layer"><h5>스킬 — 공통 방법론</h5><p>의미·목소리·지형도·브랜딩. 대화 맥락에 맞게 자동으로 불려 옵니다.</p></div>
+    <div class="layer"><h5>서브에이전트 — 개인화된 작업자</h5><p>글쓰기·유튜브·뉴스레터처럼 자기 매체대로 만듭니다. 스킬을 활용합니다.</p></div>
+    <div class="layer"><h5>MCP — 볼트 연결</h5><p>obsidian-mcp가 클로드 코드와 옵시디언을 잇습니다. (Step 3)</p></div>
+  </div>
+
+  <h3>스킬 4종</h3>
+  <table>
+    <tr><th>스킬</th><th>단계</th><th>하는 일</th></tr>
+    <tr><td class="lab">의미</td><td>문법</td><td>로고테라피로 ‘의미의 축’을 길어 올린다</td></tr>
+    <tr><td class="lab">목소리</td><td>문법</td><td>글을 5층위로 분석해 언어 지문과 희석 신호를 가린다</td></tr>
+    <tr><td class="lab">지형도</td><td>문법→논리</td><td>지식 지형도를 그리고 콘텐츠를 추천한다</td></tr>
+    <tr><td class="lab">브랜딩</td><td>논리</td><td>이상적 독자·변환·IP 확장·오퍼를 설계한다</td></tr>
+  </table>
+
+  <h3>에이전트 설정 — 메인과 서브</h3>
+  <h4>메인 에이전트 — 이름을 정합니다</h4>
+  <p>메인 에이전트는 클로드 코드 그 자체입니다. 볼트를 총괄하고, 스킬을 부르고, 서브에이전트에 일을 맡깁니다. <code>/deeper-os:setup</code>이 CLAUDE.md에 이름을 적어 둡니다. 부르고 싶은 이름을 정하면 됩니다.</p>
+
+  <h4>서브에이전트 — 매체별로 하나씩, 세 단계로</h4>
+  <p><strong>1단계 · 만들기를 요청합니다.</strong> 클로드 코드 대화창에 이렇게 말합니다.</p>
+  <div class="block"><button class="copybtn">복사</button><pre class="cmd">글쓰기를 맡을 서브에이전트를 만들고 싶어. /agents로 만들어 줘.</pre></div>
+  <p><strong>2단계 · 이름과 설명을 정합니다.</strong> 이름(키)은 영문 소문자, 설명은 한글로 적습니다.</p>
+  <div class="block"><pre class="cmd">이름(키):  writing
+설명:      블로그·에세이 초안을 내 목소리로 쓴다</pre></div>
+  <p><strong>3단계 · 무엇을 읽고 쓸지 알려 줍니다.</strong></p>
+  <div class="block"><button class="copybtn">복사</button><pre class="cmd">내 씨앗(01-Grammar/Insights)과 의미의 축을 읽고,
+voice·branding 스킬을 활용해. 발행 글은 '나'·'종합' 씨앗만 써.</pre></div>
+  <p>유튜브를 한다면 <code>youtube</code>, 뉴스레터라면 <code>newsletter</code>를 같은 방식으로 만듭니다. 매체마다 하나씩 두면, 부를 때 그 작업자가 스킬을 불러 일합니다.</p>
+</div></section>
+
+<!-- usage -->
+<section id="usage"><div class="wrap">
+  <div class="sec-kicker">How to Use</div>
+  <h2>스킬과 에이전트, 어떻게 쓰는가</h2>
+  <p>deeper OS는 클로드 코드 안에서 작동합니다. 데스크톱 앱 Code 탭에서 클로드 코드를 실행하고, 볼트에 연결된 그 대화창에서 사용합니다. claude.ai 웹 대화창이 아닙니다.</p>
+  <h3>스킬 — 한글로 말하면 됩니다</h3>
+  <p>스킬은 대화 맥락에 맞게 자동으로 불려 옵니다. 슬래시나 영문을 외울 필요가 없습니다.</p>
+  <div class="block"><pre class="cmd">"내 원천 읽고 목소리 분석해 줘"   →  목소리 (voice)
+"지형도 그려 줘"                  →  지형도 (topography)
+"의미를 찾고 싶어"                →  의미 (meaning)
+"이걸로 뭘 만들까"                →  브랜딩 (branding)</pre></div>
+  <p>특정 스킬을 콕 집고 싶으면 이름을 직접 부르면 됩니다 — "voice 스킬로 분석해 줘"처럼. 슬래시 명령으로 등록되는 것은 <code>/deeper-os:setup</code> 같은 커맨드뿐이고, 스킬은 대화로 부릅니다.</p>
+  <h3>이렇게 흘러갑니다</h3>
+  <div class="block"><pre class="cmd">나: Raw-Text에 어제 메모 넣었어. 읽고 씨앗으로 정리해 줘.
+  → 원천을 읽고 자기완결적 주장(씨앗)으로 Insights에 저장, 키워드 링크.
+
+나: 지형도 그려 줘.
+  → 씨앗 문장·원천·씨앗을 읽고 지식 지형도 + 콘텐츠 추천.
+
+나: 추천한 첫 글, writing 에이전트로 초안 잡아 줘.
+  → writing 에이전트가 목소리·브랜딩 스킬을 참고해 초안 작성.</pre></div>
+</div></section>
+
+<!-- concept -->
+<section id="concept"><div class="wrap">
+  <div class="sec-kicker">The Unit</div>
+  <h2>씨앗 — deeper OS의 기본 단위</h2>
+  <p>deeper OS의 기본 단위는 문서가 아니라 ‘씨앗’, 즉 하나의 주장 문장입니다. 각 씨앗은 단독으로 읽어도 이해되도록 씁니다. 그리고 출처를 표기합니다 — <span class="em">나 · 인용 · 종합.</span> 외부 발행 글은 ‘나’와 ‘종합’ 씨앗으로만 쓰고, ‘인용’은 자료로만 둡니다. 본인의 문장과 인용이 섞이지 않게 하여 목소리를 일관되게 지키는 원칙입니다.</p>
+  <p>옵시디언의 그래프는 노트 사이의 내부 링크로 그려집니다. 씨앗마다 핵심 키워드를 <code>[[키워드]]</code>로 표시하면, 같은 키워드를 단 씨앗들이 그 키워드 노드로 모여 주제별 색인이 됩니다. 클로드 코드는 CLAUDE.md 규칙에 따라 저장할 때마다 키워드를 자동으로 링크합니다. 작업이 쌓일수록 지도가 스스로 자라납니다.</p>
+</div></section>
+
+<!-- publish -->
+<section id="publish"><div class="wrap">
+  <div class="sec-kicker">Publish</div>
+  <h2>발행 — 공유 아카이브로 내보내기</h2>
+  <p>작업은 로컬에서 하고, 공유하기로 정한 씨앗만 OneDrive 공유 아카이브로 보냅니다. 클로드 코드에 파일과 폴더를 지정해 요청합니다.</p>
+  <div class="block"><button class="copybtn">복사</button><pre class="cmd">01-Grammar/Insights의 [파일명] 씨앗을 공유 아카이브의
+'그룹인사이트' 폴더로 복사해 줘. 로컬 원본은 그대로 둬.</pre></div>
+  <p>로컬 원본은 보존되고, 복사본만 동기화되어 그룹이 봅니다. 기본은 비공개이며, 발행은 명시적으로 요청할 때만 일어납니다.</p>
+</div></section>
+
+<section class="summary"><div class="wrap">
+  <p>생각을 꺼내 쌓으면 복리로 불어난다. AI에 기대지 않고, 내 맥락을 소유한다.</p>
+</div></section>
+
+<section id="stuck"><div class="wrap">
+  <div class="sec-kicker">Troubleshooting</div>
+  <h2>문제가 생겼을 때</h2>
+  <p>오류가 나면 <code>claude doctor</code>로 설치 상태를 점검합니다. <code>/mcp</code>에 obsidian이 없으면 클로드 코드를 종료했다 다시 실행합니다. 플러그인이 보이지 않으면 <code>/reload-plugins</code>를 실행합니다. 그래도 막히면 그 화면을 저장해 살롱에서 함께 점검합니다.</p>
+</div></section>
+
+<footer>1인 기업 창작자를 위한 deeper OS · 디퍼 언브랜딩 살롱<br>© 2026 deeper unbranding salon. All Rights Reserved.</footer>
+
+<script>
+  document.querySelectorAll('.copybtn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var pre = btn.parentElement.querySelector('pre');
+      navigator.clipboard.writeText(pre.innerText).then(function(){
+        var old = btn.textContent; btn.textContent='복사됨'; setTimeout(function(){ btn.textContent=old; }, 1400);
+      });
+    });
+  });
+</script>
+</body>
+</html>

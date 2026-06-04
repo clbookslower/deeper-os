@@ -1,0 +1,14 @@
+{
+  "name": "deeper-os",
+  "owner": {
+    "name": "디퍼 언브랜딩 살롱"
+  },
+  "plugins": [
+    {
+      "name": "deeper-os",
+      "source": "./",
+      "description": "1인 기업 창작자를 위한 세컨 브레인 — 스킬 4종·서브에이전트 템플릿·세팅 커맨드를 한 번에 설치합니다.",
+      "version": "1.0.0"
+    }
+  ]
+}
