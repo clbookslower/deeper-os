@@ -78,7 +78,7 @@ tr:nth-child(even) td{background:rgba(0,0,0,.012)}
 <h2>0단계 · 준비물 (5분)</h2>
 <ul><li><strong>클로드 유료 구독(Pro 이상)</strong> — Code 탭은 유료에서 열려요. <a href="https://claude.ai" target="_blank" rel="noopener">claude.ai</a>에서 플랜 확인.</li><li><strong>옵시디언</strong> — 무료 노트 앱(1단계에서 설치). <a href="https://obsidian.md" target="_blank" rel="noopener">obsidian.md</a></li><li><strong>PC</strong> — 🍎 맥(macOS 13 이상) 또는 🪟 윈도우(Windows 10 이상). 아이패드·폰은 안 돼요. 인터넷 연결.</li></ul>
 <h2>0.5단계 · Git 설치 (5분)</h2>
-<p><strong>Git</strong> = 파일 변화를 기록·백업하게 해주는 작은 도구. 직접 쓸 일은 없고 사막여우가 뒤에서 써요. 한 번만 깔면 됩니다.</p>
+<p><strong>Git</strong> = 파일 변화를 기록·백업하게 해주는 작은 도구. 직접 쓸 일은 없고 사막여우가 뒤에서 써요. 한 번만 깔면 됩니다.<br><strong>꼭 먼저 깔아두세요</strong> — 나중에 깃허브 백업을 인증할 때(일회용 <em>번호</em> 받기, 6단계) 이게 깔려 있어야 돼요.</p>
 <ul><li>🪟 <strong>윈도우(꼭)</strong> — <a href="https://git-scm.com/downloads/win" target="_blank" rel="noopener">git-scm.com/downloads/win</a> → 받은 파일 더블클릭 → 화면이 여러 장 이어져도 <strong>전부 기본값 그대로 <code>Next</code></strong> → <code>Install</code> → <code>Finish</code>. (설치하면 'Git Bash'도 같이 깔려요 — 같은 거예요.)</li><li>🍎 <strong>맥(확인만)</strong> — 보통 이미 있어요. 없으면 <strong>4부 '폴더를 선택해도 작동이 안 돼요(Git 문제)'</strong>에서 사막여우가 알려줘요(그때 "설치" 한 번).</li></ul>
 <h2>1단계 · 옵시디언 설치하고 '볼트' 만들기 (7분)</h2>
 <blockquote><p>옵시디언이 처음이셔도 괜찮아요. 여기서 차근차근 같이 해요.</p></blockquote>
@@ -107,6 +107,7 @@ tr:nth-child(even) td{background:rgba(0,0,0,.012)}
 <blockquote><p>💡 <strong><code>Code</code> 탭에서 시작해요(본진).</strong> <code>Cowork</code>도 같은 폴더를 읽고 로컬에 저장하지만, 설치·세팅은 Code 탭이 가장 매끄러워요.<br>💡 사막여우는 만들거나 실행하기 <strong>전에 "이렇게 할까요?"</strong> 물어요 → 내용 보고 <strong>Accept</strong>.</p></blockquote>
 <h2>4단계 · 디퍼 OS 설치 (앱 안 터미널로)</h2>
 <blockquote><p>천천히, <strong>한 줄씩</strong>. 우리가 칠 건 몇 줄뿐이에요.</p></blockquote>
+<blockquote><p>🖥️ <strong>'터미널'이 처음이세요? (1분만 읽어요)</strong><br>터미널은 <em>글로 명령을 시키는 칸</em>이에요. 무섭지 않아요 — 한 줄 치고 <strong>Enter</strong>가 전부예요.<br>- 🪟 윈도우는 <strong>PowerShell</strong>(<code>PS C:\…&amp;gt;</code> 로 시작) · 🍎 맥은 <strong>터미널</strong>(<code>…%</code> 로 시작). 색은 테마 따라 흰색일 수도, 어두울 수도 있어요.<br>- <strong>붙여넣기</strong>(이 가이드의 명령을 복사해 붙일 때): 🪟 마우스 <strong>오른쪽 클릭</strong> 또는 <code>Ctrl</code>+<code>V</code> · 🍎 <code>Cmd</code>+<code>V</code>.<br>- 비밀번호처럼 <strong>글자가 안 보여도 정상</strong>이에요. 그냥 치고 Enter.<br>- 틀려도 괜찮아요. 다시 치면 돼요.</p></blockquote>
 <h3>4-1. 터미널 열기</h3>
 <ul><li>Code 탭 화면 <strong>오른쪽 위 <code>&amp;gt;_</code> 아이콘</strong>(터미널 모양)을 눌러요 → <strong>오른쪽에 터미널 칸</strong>이 열려요.</li><li>흰 바탕에 위쪽에 "터미널"이라고 적혀 있어요. (🪟 윈도우는 <em>PowerShell</em> · 🍎 맥은 <em>터미널/zsh</em> — 색은 테마 따라 달라요.)</li></ul>
 <h3>4-2. 터미널을 '내 볼트' 폴더로 맞추기 — <code>cd</code> 한 번만 배우기</h3>
@@ -135,8 +136,8 @@ tr:nth-child(even) td{background:rgba(0,0,0,.012)}
 <ul><li><strong>맨 먼저 "제가 뭐라고 불러드릴까요?"</strong> 하고 호칭을 물어요 — 그 호칭으로 계속 불러줘요(그냥 '디퍼님'도, 이름도, 좋아하는 호칭도 OK). 이어서 직업·역할 정도를 <strong>대화하듯 따뜻하게</strong>(딱딱한 양식 아님). 사막여우 이름은 <strong>자동</strong>.</li><li>기존 노트는 안 건드리고, 매 단계 <strong>"만들까요?"</strong> 물어요 → 네.</li><li>폴더(<code>00-Daily</code>·<code>01-Grammar</code> 등)·데일리 템플릿·질문이 생기고 —</li><li><strong>끝나는 순간 사막여우가 다정하게 인사하며 첫 질문</strong>을 건네요. 🦊 (그게 시작이에요. 한 줄 답하면 첫 씨앗이 쌓여요.)</li></ul>
 <h2>6단계 · GitHub 백업 연결 (7분)</h2>
 <p>OneDrive 대신 <strong>GitHub 비공개 금고</strong>가 백업이자 '되돌리기'예요. 어려운 명령은 사막여우가 대신 하고, 나는 <strong>딱 둘</strong>만:</p>
-<ol><li><strong>(한 번) GitHub 계정</strong> — <a href="https://github.com" target="_blank" rel="noopener">github.com</a> → <code>Sign up</code> → 가입(무료) → 이메일 인증.</li><li><strong>(한 번) 연결 맡기기</strong> — 입력창에 <code>백업 연결</code> → 사막여우가 도구 설치·저장소 생성·첫 백업까지. 진행 중 내가 할 일:</li></ol>
-<ul><li>🍎 (맥) 비밀번호 창 뜨면 맥 로그인 비번 입력(<strong>글자 안 보이는 게 정상</strong>) + Enter.</li><li>(공통) <strong>브라우저 로그인 한 번</strong> — 일회용 코드 붙여넣고 <code>Authorize</code>. <em>평생 한 번.</em> (선택지 자세히는 [4부].)</li></ul>
+<ol><li><strong>(한 번) GitHub 계정</strong> — <a href="https://github.com" target="_blank" rel="noopener">github.com</a> → <code>Sign up</code> → 가입(무료) → 이메일 인증.</li><li><strong>(한 번) 연결 맡기기</strong> — <em>(Git이 깔려 있어야 돼요 → 0.5단계.)</em> 입력창에 <code>백업 연결</code> → 사막여우가 도구 설치·저장소 생성·첫 백업까지 해줘요. 진행 중 내가 할 일:</li></ol>
+<ul><li>🔑 <strong>일회용 번호(코드)로 GitHub 인증</strong> — 터미널(또는 사막여우)이 <strong>번호(코드)</strong>를 보여주고 브라우저를 열어요. → 그 <strong>번호를 복사</strong> → 브라우저에 <strong>붙여넣기</strong>(🪟 우클릭 또는 <code>Ctrl</code>+<code>V</code> · 🍎 <code>Cmd</code>+<code>V</code>) → <strong>GitHub 로그인</strong> → <strong>Authorize(승인)</strong> → 터미널로 돌아오면 자동으로 이어져요. <em>평생 한 번.</em></li><li>🍎 (맥) 중간에 비밀번호 창이 뜨면 맥 로그인 비번 입력(<strong>글자 안 보이는 게 정상</strong>) + Enter.</li></ul>
 <ol><li><strong>(이후 매일)</strong> <code>백업</code> 한마디 → 사막여우가 비공개 금고에 저장.</li></ol>
 <blockquote><p>⚠️ <strong>백업은 건너뛰지 마세요.</strong> OneDrive를 안 쓰니 이게 <em>유일한</em> 안전장치예요. 저장소가 <strong>비공개(Private)</strong>인지 한 번만 확인하면 끝 — 나만 봐요.</p></blockquote>
 <p>✅ <strong>여기까지 오면 설치 끝!</strong> 이제 3부로.</p>
