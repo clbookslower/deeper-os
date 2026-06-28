@@ -105,13 +105,31 @@ tr:nth-child(even) td{background:rgba(0,0,0,.012)}
 <ol><li>Code 탭 환경을 <strong><code>Local</code></strong>로.</li><li><strong><code>Select folder</code></strong> → <strong>1단계에서 옵시디언으로 만든 바로 그 폴더</strong> 선택.</li><li>잘 됐는지 입력창에: <code>여기 어떤 폴더야? 안에 뭐가 있어?</code> → 내 노트를 읽어주면 OK.</li></ol>
 <blockquote><p>🔗 <strong>이게 '옵시디언 ↔ 클로드 코드 연결'이에요.</strong> 1단계에서 <em>옵시디언으로 만든</em> 그 폴더를 여기서 고르면, <strong>둘이 같은 폴더를 함께</strong> 봐요 — 따로 연결 작업이 없어요(볼트가 옵시디언에서 태어났으니 옵시디언은 이미 이어져 있어요).<br>💡 혹시 <strong>볼트를 옵시디언이 아닌 방법으로 만들었다면</strong>(예: 폴더만 따로 생성), 옵시디언에서 한 번만 열어주세요: 옵시디언 좌측 끝 <strong>볼트 아이콘</strong>(또는 좌하단 볼트 이름) 클릭 → <strong>'다른 보관소 열기' → '폴더를 보관소로 열기(Open folder as vault)'</strong> → 그 폴더 선택.</p></blockquote>
 <blockquote><p>💡 <strong><code>Code</code> 탭에서 시작해요(본진).</strong> <code>Cowork</code>도 같은 폴더를 읽고 로컬에 저장하지만, 설치·세팅은 Code 탭이 가장 매끄러워요.<br>💡 사막여우는 만들거나 실행하기 <strong>전에 "이렇게 할까요?"</strong> 물어요 → 내용 보고 <strong>Accept</strong>.</p></blockquote>
-<h2>4단계 · 디퍼 OS 설치</h2>
-<p>Code 탭 입력창에 <strong>한 줄씩</strong> 차례로:</p>
+<h2>4단계 · 디퍼 OS 설치 (앱 안 터미널로)</h2>
+<blockquote><p>천천히, <strong>한 줄씩</strong>. 우리가 칠 건 몇 줄뿐이에요.</p></blockquote>
+<h3>4-1. 터미널 열기</h3>
+<ul><li>Code 탭 화면 <strong>오른쪽 위 <code>&amp;gt;_</code> 아이콘</strong>(터미널 모양)을 눌러요 → <strong>오른쪽에 터미널 칸</strong>이 열려요.</li><li>흰 바탕에 위쪽에 "터미널"이라고 적혀 있어요. (🪟 윈도우는 <em>PowerShell</em> · 🍎 맥은 <em>터미널/zsh</em> — 색은 테마 따라 달라요.)</li></ul>
+<h3>4-2. 터미널을 '내 볼트' 폴더로 맞추기 — <code>cd</code> 한 번만 배우기</h3>
+<p>터미널 맨 앞에 <strong>지금 폴더</strong>가 보여요: <code>PS C:\...&amp;gt;</code> (🍎 맥은 <code>…%</code>).</p>
+<ul><li>그 경로가 <strong>내 볼트</strong>면 → 그대로 4-3으로.</li><li>아니면 <code>cd</code>로 옮겨요. <strong><code>cd</code>는 "이 폴더로 가자"</strong>는 뜻이고, 딱 둘만 알면 돼요:</li><li><strong><code>cd ..</code></strong> — <strong>한 칸 위로</strong> 나가기. (<code>..</code> 점 두 개 = "한 단계 위 폴더")</li></ul>
+<p>    예: <code>C:\Users\나\볼트\00-Daily</code> 에서 <code>cd ..</code> → <code>C:\Users\나\볼트</code></p>
+<ul><li><strong><code>cd 폴더이름</code></strong> — 그 폴더 <strong>안으로</strong> 들어가기.</li></ul>
+<p>    예: <code>C:\Users\나</code> 에서 <code>cd 볼트</code> → <code>C:\Users\나\볼트</code></p>
+<ul><li><strong>한 번에 가기</strong>: <code>cd </code> (cd + 스페이스) 친 뒤, <strong>볼트 폴더를 터미널 칸으로 드래그</strong>해서 떨어뜨리면 경로가 자동으로 붙어요.</li><li>칠 때마다 끝에 <strong>Enter</strong>. 맨 앞 경로가 <strong>내 볼트</strong>로 바뀌면 성공이에요.</li><li>헷갈리면: <strong><code>cd ..</code>를 한두 번</strong> 쳐서 위로 나간 뒤, 보이는 폴더로 <strong><code>cd 폴더이름</code></strong> 하며 한 칸씩 들어가요.</li></ul>
+<h3>4-3. 클로드 실행 (없으면 한 번만 설치)</h3>
+<ul><li><code>claude</code> → Enter. 설정 화면이 뜨면 4-4로.</li><li>"claude 인식 안 됨 / not recognized"가 뜨면 한 번만 설치: <code>npm install -g @anthropic-ai/claude-code</code> → Enter → 끝나면 다시 <code>claude</code> → Enter.</li></ul>
+<h3>4-4. 첫 실행 화면 넘기기 (거의 Enter, 한 번 로그인)</h3>
+<ol><li><strong>테마(색)</strong> → 고르고 Enter.</li><li><strong>로그인(유료 인증)</strong> → "Log in" → <strong>브라우저 열림</strong> → <strong>유료(Pro) 계정 로그인</strong> → "Authorize/허용" → 터미널로 돌아오기.</li><li><strong>깃허브 연결</strong> 화면이 나오면 → 지금은 <strong>Skip/나중에</strong> (백업은 6단계).</li><li><strong>보안 안내</strong> → Enter.</li><li><strong>"이 폴더를 신뢰?"</strong> → <strong>Yes/Enter.</strong></li></ol>
+<p>→ <code>&amp;gt;</code> 입력 표시가 뜨면 준비 끝. 🦊</p>
+<h3>4-5. 디퍼 OS 설치 (세 줄, 한 줄씩 Enter)</h3>
+<p>클로드 안에서 한 줄씩 치고 Enter:</p>
 <pre><code>/plugin marketplace add https://github.com/clbookslower/deeper-os.git</code></pre>
 <pre><code>/plugin install deeper-os@deeper-os</code></pre>
 <pre><code>/reload-plugins</code></pre>
-<p>이걸로 <strong>스킬 + 30일 여정 + 세팅 커맨드</strong>가 한 번에 깔려요.</p>
-<blockquote><p>⚠️ <code>/plugin</code>이 <em>"isn't available in this environment"</em>라고 뜨거나 안 되면 → <strong>[4부 · 디퍼 OS가 안 깔릴 때]</strong>로. (거의 거기서 해결돼요.)</p><p>🔄 <strong>이미 디퍼 OS를 쓰던 분(또는 1기)</strong> — 다시 설치 말고 위 세 줄 중 <code>marketplace update</code> → <code>install</code> → <code>/reload-plugins</code>로 <strong>업데이트</strong>만. 기존 노트는 그대로예요. 안 되면 [4부].</p></blockquote>
+<ul><li>중간에 "추가/설치할까요?" 물으면 <strong>Yes/Enter.</strong></li></ul>
+<h3>4-6. 확인</h3>
+<ul><li><code>/deeper-os:setup</code> 쳐서 반응하면 성공 → <strong>5단계로.</strong></li></ul>
+<blockquote><p>🔄 <strong>이미 디퍼 OS를 쓰던 분(또는 1기)</strong> — 다시 설치 말고, 클로드 안에서 <code>/plugin marketplace update deeper-os</code> → <code>/reload-plugins</code>로 <strong>업데이트</strong>만. 기존 노트는 그대로예요.</p></blockquote>
 <h2>5단계 · 사막여우 깨우기</h2>
 <pre><code>/deeper-os:setup</code></pre>
 <ul><li><strong>맨 먼저 "제가 뭐라고 불러드릴까요?"</strong> 하고 호칭을 물어요 — 그 호칭으로 계속 불러줘요(그냥 '디퍼님'도, 이름도, 좋아하는 호칭도 OK). 이어서 직업·역할 정도를 <strong>대화하듯 따뜻하게</strong>(딱딱한 양식 아님). 사막여우 이름은 <strong>자동</strong>.</li><li>기존 노트는 안 건드리고, 매 단계 <strong>"만들까요?"</strong> 물어요 → 네.</li><li>폴더(<code>00-Daily</code>·<code>01-Grammar</code> 등)·데일리 템플릿·질문이 생기고 —</li><li><strong>끝나는 순간 사막여우가 다정하게 인사하며 첫 질문</strong>을 건네요. 🦊 (그게 시작이에요. 한 줄 답하면 첫 씨앗이 쌓여요.)</li></ul>
