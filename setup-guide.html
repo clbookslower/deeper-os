@@ -108,8 +108,8 @@ tr:nth-child(even) td{background:rgba(0,0,0,.012)}
 <h2>4단계 · 디퍼 OS 설치 (앱 안 터미널로)</h2>
 <blockquote><p>천천히, <strong>한 줄씩</strong>. 우리가 칠 건 몇 줄뿐이에요.</p></blockquote>
 <blockquote><p>🖥️ <strong>'터미널'이 처음이세요? (1분만 읽어요)</strong><br>터미널은 <em>글로 명령을 시키는 칸</em>이에요. 무섭지 않아요 — 한 줄 치고 <strong>Enter</strong>가 전부예요.<br>- 🪟 윈도우는 <strong>PowerShell</strong>(<code>PS C:\…&amp;gt;</code> 로 시작) · 🍎 맥은 <strong>터미널</strong>(<code>…%</code> 로 시작). 색은 테마 따라 흰색일 수도, 어두울 수도 있어요.<br>- <strong>붙여넣기</strong>(이 가이드의 명령을 복사해 붙일 때): 🪟 마우스 <strong>오른쪽 클릭</strong> 또는 <code>Ctrl</code>+<code>V</code> · 🍎 <code>Cmd</code>+<code>V</code>.<br>- 비밀번호처럼 <strong>글자가 안 보여도 정상</strong>이에요. 그냥 치고 Enter.<br>- 틀려도 괜찮아요. 다시 치면 돼요.</p></blockquote>
-<h3>4-1. 터미널 열기</h3>
-<ul><li>Code 탭 화면 <strong>오른쪽 위 <code>&amp;gt;_</code> 아이콘</strong>(터미널 모양)을 눌러요 → <strong>오른쪽에 터미널 칸</strong>이 열려요.</li><li>흰 바탕에 위쪽에 "터미널"이라고 적혀 있어요. (🪟 윈도우는 <em>PowerShell</em> · 🍎 맥은 <em>터미널/zsh</em> — 색은 테마 따라 달라요.)</li></ul>
+<h3>4-1. 터미널 열기 (앱 안에서 — 두 가지 방법, 아무거나)</h3>
+<ul><li><strong>방법 ① 버튼</strong> — Code 탭 화면 <strong>오른쪽 위 <code>&gt;_</code> 아이콘</strong>(터미널 모양)을 눌러요.</li><li><strong>방법 ② 단축키</strong> — <code>Ctrl</code> + <code>&#96;</code> (백틱: 키보드 <strong>맨 왼쪽 위, <code>Esc</code> 아래·숫자 <code>1</code> 왼쪽</strong> 키 — 물결 <code>~</code>과 같은 키예요). 🍎 맥도 똑같이 <code>Ctrl</code>+<code>&#96;</code>. (다시 누르면 닫혀요.)</li><li>→ 둘 다 <strong>같은 터미널 칸</strong>이 열려요(화면 아래쪽 또는 오른쪽). 위에 "터미널"이라고 적혀 있어요. (🪟 윈도우는 <em>PowerShell</em> <code>PS C:\…&gt;</code> · 🍎 맥은 <em>zsh</em> <code>…%</code> — 색은 테마 따라.)</li><li>⚠️ 이건 윈도우 <em>PowerShell</em>·맥 <em>'터미널'</em> 같은 <strong>별도 프로그램이 아니라, 클로드 앱 <u>안</u>에 있는 터미널</strong>이에요(맥·윈도우 똑같아요).</li></ul>
 <h3>4-2. 터미널을 '내 볼트' 폴더로 맞추기 — <code>cd</code> 한 번만 배우기</h3>
 <p>터미널 맨 앞에 <strong>지금 폴더</strong>가 보여요: <code>PS C:\...&amp;gt;</code> (🍎 맥은 <code>…%</code>).</p>
 <ul><li>그 경로가 <strong>내 볼트</strong>면 → 그대로 4-3으로.</li><li>아니면 <code>cd</code>로 옮겨요. <strong><code>cd</code>는 "이 폴더로 가자"</strong>는 뜻이고, 딱 둘만 알면 돼요:</li><li><strong><code>cd ..</code></strong> — <strong>한 칸 위로</strong> 나가기. (<code>..</code> 점 두 개 = "한 단계 위 폴더")</li></ul>
@@ -118,12 +118,14 @@ tr:nth-child(even) td{background:rgba(0,0,0,.012)}
 <p>    예: <code>C:\Users\나</code> 에서 <code>cd 볼트</code> → <code>C:\Users\나\볼트</code></p>
 <ul><li><strong>한 번에 가기</strong>: <code>cd </code> (cd + 스페이스) 친 뒤, <strong>볼트 폴더를 터미널 칸으로 드래그</strong>해서 떨어뜨리면 경로가 자동으로 붙어요.</li><li>칠 때마다 끝에 <strong>Enter</strong>. 맨 앞 경로가 <strong>내 볼트</strong>로 바뀌면 성공이에요.</li><li>헷갈리면: <strong><code>cd ..</code>를 한두 번</strong> 쳐서 위로 나간 뒤, 보이는 폴더로 <strong><code>cd 폴더이름</code></strong> 하며 한 칸씩 들어가요.</li></ul>
 <h3>4-3. 클로드 실행 (없으면 한 번만 설치)</h3>
+<p>방금 연 <strong>터미널 칸에는 <code>claude</code> 딱 한 단어만</strong> 쳐요(아직 슬래시 명령 아니에요).</p>
 <ul><li><code>claude</code> → Enter. 설정 화면이 뜨면 4-4로.</li><li>"claude 인식 안 됨 / not recognized"가 뜨면 한 번만 설치: <code>npm install -g @anthropic-ai/claude-code</code> → Enter → 끝나면 다시 <code>claude</code> → Enter.</li></ul>
 <h3>4-4. 첫 실행 화면 넘기기 (거의 Enter, 한 번 로그인)</h3>
 <ol><li><strong>테마(색)</strong> → 고르고 Enter.</li><li><strong>로그인(유료 인증)</strong> → "Log in" → <strong>브라우저 열림</strong> → <strong>유료(Pro) 계정 로그인</strong> → "Authorize/허용" → 터미널로 돌아오기.</li><li><strong>깃허브 연결</strong> 화면이 나오면 → 지금은 <strong>Skip/나중에</strong> (백업은 6단계).</li><li><strong>보안 안내</strong> → Enter.</li><li><strong>"이 폴더를 신뢰?"</strong> → <strong>Yes/Enter.</strong></li></ol>
-<p>→ <code>&amp;gt;</code> 입력 표시가 뜨면 준비 끝. 🦊</p>
+<p>→ 화면이 바뀌고 아래에 <code>&gt;</code> 입력 표시가 뜨면, <strong>이제 여기가 '클로드 안'</strong>이에요(터미널이 클로드로 바뀐 거예요). 🦊</p>
 <h3>4-5. 디퍼 OS 설치 (세 줄, 한 줄씩 Enter)</h3>
-<p>클로드 안에서 한 줄씩 치고 Enter:</p>
+<blockquote><p>📍 <strong>여기가 제일 헷갈리는 곳! 칠 자리를 구분해요 — 세 칸이 달라요.</strong><br>① <strong>Code 탭 채팅창</strong> — 여기선 <code>/plugin</code>이 <em>안 돼요</em>("isn't available in this environment"). ❌<br>② <strong>터미널 칸</strong>(4-1에서 연 것) — 여기엔 <code>claude</code>만 쳤어요.<br>③ <strong>그 터미널 안에서 실행된 '클로드'</strong>(<code>&gt;</code> 입력 표시) — <strong>아래 <code>/plugin</code> 명령은 꼭 ③ 여기</strong>에 쳐요. ✅<br>👉 <strong>한 줄 요약: 터미널 열기(버튼/<code>Ctrl</code>+<code>&#96;</code>) → <code>claude</code> 실행 → <u>실행된 클로드 안</u>에 <code>/plugin…</code></strong></p></blockquote>
+<p><strong>③ 클로드 안</strong>(<code>&gt;</code> 표시 보이죠?)에서 한 줄씩 치고 Enter:</p>
 <pre><code>/plugin marketplace add https://github.com/clbookslower/deeper-os.git</code></pre>
 <pre><code>/plugin install deeper-os@deeper-os</code></pre>
 <pre><code>/reload-plugins</code></pre>
