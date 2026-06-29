@@ -50,6 +50,7 @@ deeper-os/
 │   ├── marketplace.json     마켓플레이스 정의 (name: deeper-os)
 │   └── plugin.json          플러그인 정의 (name: deeper-os)
 ├── skills/                  공통 방법론 — 필요할 때 자동 로드
+│   ├── desertfox/           사막여우 · 어디서든 이름 부르면 깨어나 볼트 찾기
 │   ├── meaning/             의미   · 로고테라피 의미 발굴
 │   ├── voice/               목소리 · 언어 지문 5층위 분석
 │   ├── topography/          지형도 · 지식 지형도 + 콘텐츠 추천
