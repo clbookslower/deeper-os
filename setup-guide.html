@@ -39,7 +39,7 @@ strong{font-weight:700;color:#13241c}em{font-style:normal;color:var(--clay);font
 hr{border:0;border-top:1px solid var(--rule);margin:26px 0}
 code{font-family:Consolas,monospace;background:#ece8dc;color:#234;padding:.1em .42em;border-radius:5px;font-size:.88em}
 pre{background:var(--green-deep);color:#e9f1ea;border-radius:12px;padding:15px 18px;overflow:auto;margin:13px 0}
-pre code{background:none;color:#dff0e4;padding:0;font-size:.9em;line-height:1.7}
+pre code{background:none;color:#dff0e4;padding:0;font-size:.9em;line-height:1.7;white-space:pre-wrap;word-break:break-all}
 ul,ol{margin:12px 0;padding-left:1.4em}li{margin:6px 0}
 blockquote{background:var(--surface);border-left:4px solid var(--green-soft);border-radius:0 12px 12px 0;padding:13px 18px;margin:16px 0;color:#33413a}
 blockquote p{margin:7px 0}
@@ -125,6 +125,7 @@ tr:nth-child(even) td{background:rgba(0,0,0,.012)}
 <p>→ 화면이 바뀌고 아래에 <code>&gt;</code> 입력 표시가 뜨면, <strong>이제 여기가 '클로드 안'</strong>이에요(터미널이 클로드로 바뀐 거예요). 🦊</p>
 <h3>4-5. 디퍼 OS 설치 (세 줄, 한 줄씩 Enter)</h3>
 <blockquote><p>📍 <strong>여기가 제일 헷갈리는 곳! 칠 자리를 구분해요 — 세 칸이 달라요.</strong><br>① <strong>Code 탭 채팅창</strong> — 여기선 <code>/plugin</code>이 <em>안 돼요</em>("isn't available in this environment"). ❌<br>② <strong>터미널 칸</strong>(4-1에서 연 것) — 여기엔 <code>claude</code>만 쳤어요.<br>③ <strong>그 터미널 안에서 실행된 '클로드'</strong>(<code>&gt;</code> 입력 표시) — <strong>아래 <code>/plugin</code> 명령은 꼭 ③ 여기</strong>에 쳐요. ✅<br>👉 <strong>한 줄 요약: 터미널 열기(버튼/<code>Ctrl</code>+<code>&#96;</code>) → <code>claude</code> 실행 → <u>실행된 클로드 안</u>에 <code>/plugin…</code></strong></p></blockquote>
+<blockquote><p>💡 <strong>폰으로 보는 중이면 주소가 짤려요</strong> — <strong>설치하는 그 PC에서 이 가이드를 열고</strong>, 아래 명령을 <strong>드래그 → 복사(<code>Ctrl</code>+<code>C</code>) → 붙여넣기(<code>Ctrl</code>+<code>V</code>)</strong> 하세요. 폰↔PC로 옮겨 치면 긴 주소(<code>…/deeper-os.git</code>) 끝이 잘려 자꾸 실패해요. <strong>맨 끝 <code>.git</code>까지 전부</strong> 들어가야 돼요.</p></blockquote>
 <p><strong>③ 클로드 안</strong>(<code>&gt;</code> 표시 보이죠?)에서 한 줄씩 치고 Enter:</p>
 <pre><code>/plugin marketplace add https://github.com/clbookslower/deeper-os.git</code></pre>
 <pre><code>/plugin install deeper-os@deeper-os</code></pre>
