@@ -12,31 +12,37 @@
 :root{--green:#1A4A35;--green-deep:#003D2C;--green-soft:#7DA890;--paper:#F4F1E8;--surface:#FBF8F0;--card:#EFEADD;--rule:#E0D9C8;--rule2:#C9C0AC;--ink:#1A1916;--ink-soft:#46443D;--mute:#6E6A60;--clay:#C67E58;
 --serif:"Noto Serif KR","Nanum Myeongjo",Batang,"바탕",serif;--sans:"Noto Sans KR","Malgun Gothic","맑은 고딕",sans-serif;}
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.9;-webkit-font-smoothing:antialiased}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.9;letter-spacing:-0.008em;-webkit-font-smoothing:antialiased}
+a{color:var(--clay);text-decoration:none;border-bottom:1px solid rgba(198,126,88,.35);transition:border-color .35s cubic-bezier(.32,.72,0,1),color .35s cubic-bezier(.32,.72,0,1)}a:hover{border-bottom-color:var(--clay)}
+.eyebrow{font-family:var(--serif);font-size:.72rem;letter-spacing:.28em;color:var(--clay);margin:58px 0 -46px;font-weight:600}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 .wrap{max-width:760px;margin:0 auto;padding:0 22px 90px}
-.hero{margin:0 -22px;background:radial-gradient(125% 95% at 50% -12%, #235a42 0%, var(--green) 46%, var(--green-deep) 100%);color:#F4F1E8;text-align:center;padding:74px 28px 64px;position:relative;overflow:hidden}
+.hero{margin:0 -22px;background:radial-gradient(125% 95% at 50% -12%, #235a42 0%, var(--green) 46%, var(--green-deep) 100%);color:#F4F1E8;text-align:center;padding:82px 28px 70px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");opacity:.05;pointer-events:none}
 .hero .logo{height:30px;margin-bottom:28px;opacity:.96}
-.hero h1{font-family:var(--serif);font-weight:800;font-size:2.1rem;line-height:1.36}
-.hero .sub{font-family:var(--serif);color:rgba(244,241,232,.82);margin-top:14px;font-size:1.05rem}
+.hero h1{font-family:var(--serif);font-weight:800;font-size:2.3rem;line-height:1.34;letter-spacing:-.02em;animation:rise .9s cubic-bezier(.32,.72,0,1) both}
+.hero .sub{font-family:var(--serif);color:rgba(244,241,232,.82);margin-top:15px;font-size:1.05rem;letter-spacing:.012em;animation:rise .9s cubic-bezier(.32,.72,0,1) .12s both}
 .hero .st{position:absolute;color:rgba(244,241,232,.5)}.s1{top:46px;left:13%;font-size:13px}.s2{top:96px;right:16%;font-size:9px;opacity:.7}.s3{top:158px;left:24%;font-size:9px;opacity:.7}.s4{bottom:60px;right:26%;font-size:11px;opacity:.6}
 .lede{font-family:var(--serif);font-size:1.08rem;color:var(--ink-soft);margin:34px 0 8px;line-height:2.05}
-h1.part{font-family:var(--serif);font-weight:800;font-size:1.8rem;color:var(--green);margin:56px 0 16px;padding-top:22px;border-top:2px solid var(--rule2);line-height:1.34}
+h1.part{font-family:var(--serif);font-weight:800;font-size:1.8rem;color:var(--green);margin:64px 0 16px;padding-top:24px;border-top:1px solid var(--rule2);line-height:1.34;letter-spacing:-.01em}
 h1.part .pbar{display:inline-block;width:30px;height:4px;background:var(--clay);border-radius:3px;vertical-align:middle;margin-right:12px}
 h2{font-family:var(--serif);font-weight:700;font-size:1.3rem;color:var(--green-deep);margin:36px 0 12px;line-height:1.4}
 h3{font-weight:700;font-size:1.05rem;color:var(--ink);margin:24px 0 8px}
 p{margin:13px 0}
 em{font-style:normal;color:var(--clay);font-weight:600}
 strong{font-weight:700;color:#13241c}
-blockquote{background:var(--surface);border-left:4px solid var(--green-soft);border-radius:0 12px 12px 0;padding:15px 20px;margin:18px 0;color:#33413a;font-family:var(--serif)}
+blockquote{background:var(--surface);border-left:3px solid var(--green-soft);border-radius:0 14px 14px 0;padding:18px 22px;margin:20px 0;color:#33413a;font-family:var(--serif);box-shadow:0 0 0 1px rgba(26,25,22,.04),0 10px 28px -18px rgba(26,25,22,.18)}
 blockquote p{margin:7px 0}
-table{width:100%;border-collapse:collapse;margin:18px 0;font-size:.94rem;background:var(--surface);border:1px solid var(--rule);border-radius:12px;overflow:hidden}
-th{background:var(--green);color:#f2efe4;text-align:left;padding:11px 14px;font-family:var(--serif);font-weight:700}
+table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.94rem;background:var(--surface);border-radius:14px;overflow:hidden;box-shadow:0 0 0 1px rgba(26,25,22,.06),0 12px 30px -18px rgba(26,25,22,.16)}
+th{background:var(--green);color:#f2efe4;text-align:left;padding:12px 15px;font-family:var(--serif);font-weight:700;letter-spacing:.03em}
 td{padding:11px 14px;border-top:1px solid var(--rule);vertical-align:top}
 tr:nth-child(even) td{background:rgba(0,0,0,.012)}
 code{font-family:Consolas,monospace;background:#ece8dc;color:#234;padding:.12em .45em;border-radius:5px;font-size:.9em}
 ul,ol{margin:13px 0;padding-left:1.4em}li{margin:7px 0}
 .canto{display:flex;gap:14px;flex-wrap:wrap;margin:20px 0}
-.canto .c{flex:1;min-width:200px;background:var(--surface);border:1px solid var(--rule);border-radius:14px;padding:18px 18px 14px}
+.canto .c{flex:1;min-width:200px;background:var(--surface);border-radius:18px;padding:20px 20px 16px;box-shadow:0 0 0 1px rgba(26,25,22,.06),0 14px 34px -20px rgba(26,25,22,.18),inset 0 1px 0 rgba(255,255,255,.6);transition:transform .5s cubic-bezier(.32,.72,0,1),box-shadow .5s cubic-bezier(.32,.72,0,1)}
+.canto .c:hover{transform:translateY(-3px);box-shadow:0 0 0 1px rgba(26,25,22,.07),0 22px 44px -20px rgba(26,25,22,.24),inset 0 1px 0 rgba(255,255,255,.6)}
 .canto .c .n{font-family:var(--serif);color:var(--clay);font-weight:700;font-size:.85rem;letter-spacing:.08em}
 .canto .c h3{margin:6px 0 8px;font-family:var(--serif);font-size:1.12rem;color:var(--green-deep)}
 .canto .c p{font-size:.92rem;color:var(--ink-soft);margin:6px 0}
@@ -49,7 +55,7 @@ td{word-break:keep-all;overflow-wrap:break-word}
 
 <div class="hero">
 <span class="st s1">✦</span><span class="st s2">✦</span><span class="st s3">✦</span><span class="st s4">✦</span>
-<img class="logo" src="DEEPER_logo.png" alt="DEEPER">
+<img class="logo" src="data:image/png;base64,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" alt="DEEPER">
 <h1>디퍼 여정 — 사막에서 별까지</h1>
 <div class="sub">문법 · 논리 · 수사 — 사막여우와 함께 걷는 세 달, 그리고 나만의 오아시스</div>
 </div>
@@ -61,6 +67,7 @@ td{word-break:keep-all;overflow-wrap:break-word}
 하루 한 걸음, 사막여우가 곁에서 함께 걷습니다.
 </p>
 
+<div class="eyebrow">PRELUDE</div>
 <h1 class="part"><span class="pbar"></span>B-612에서 출발합니다</h1>
 
 <p>당신은 자기 별을 떠나 사막에 온 사람입니다. 어린왕자가 그랬듯이요. 사막에는 여우가 한 마리 삽니다 — 길들여지길 기다리는. 그리고 사막이 아름다운 건, 어딘가 <em>우물</em>을 감추고 있기 때문입니다.</p>
@@ -78,6 +85,7 @@ td{word-break:keep-all;overflow-wrap:break-word}
 
 <p>매달의 마지막 사흘은 <strong>별을 보는 사흘</strong>입니다. 한 달의 글을 처음 보는 사람처럼 되읽고, 길어 올린 조각 하나를 누군가에게 건네고, 그 달의 <em>별 문장 하나</em>를 골라 빛나게 합니다. 그렇게 당신의 세 달도, 세 번 모두 별로 끝납니다.</p>
 
+<div class="eyebrow">TRIVIUM</div>
 <h1 class="part"><span class="pbar"></span>세 달의 커리큘럼</h1>
 
 <h2>첫째 달 · 문법 — 오아시스를 찾다 <span style="font-weight:400;color:var(--mute);font-size:.85em">(나는 무엇을 가지고 있는가)</span></h2>
@@ -121,6 +129,7 @@ td{word-break:keep-all;overflow-wrap:break-word}
 </tbody></table>
 <p>마지막 백 번째 곡에서 네 가지가 나란히 놓입니다 — <strong>문법 첫날의 첫 문장, 의미의 축, 악보, 매니페스토.</strong> 여기서 출발해, 여기까지 부른 것입니다. 발화란 누군가의 밤하늘에 별 하나를 거는 일이니까요 — <em>네가 웃으면, 나는 모든 별이 웃는 것 같을 거야.</em> 별이 별을 낳습니다.</p>
 
+<div class="eyebrow">OASIS</div>
 <h1 class="part"><span class="pbar"></span>나만의 오아시스</h1>
 
 <p>여정이 걷는 일이라면, 오아시스는 멈춰 마시는 일입니다. <code>오아시스</code> 한마디면 닿는 <strong>백 개의 샘</strong>이 사막 곳곳에 있습니다. 진도도 수료도 없습니다 — 목마른 날 들르면 됩니다. 샘은 두 가지를 한 번에 합니다. 빌려 입은 것을 벗기고, 벗은 자리에 자기신뢰가 고이게 합니다.</p>
@@ -134,12 +143,13 @@ td{word-break:keep-all;overflow-wrap:break-word}
 <tr><td>용기</td><td>발화</td><td>"당신에게 고맙다고 한 사람의 말을 그대로 옮겨 적어본 적 있나요?"</td></tr>
 </tbody></table>
 
-<blockquote><p><strong>별남에 대하여.</strong> 바르트는 우리를 찌르는 사소한 디테일을 푼크툼이라 불렀습니다. 남들이 "별나다" 하는 그 지점 — 못 고친 버릇, 아무도 이해 못 하는 취향, 지우려 해도 배어 나오는 말버릇. 디퍼는 그것을 깎아내지 않고 강점으로 뒤집습니다. <em>별나다는 말 속에는, 별이 있습니다.</em> 아무도 흉내 낼 수 없는 당신의 자리가 거기서 시작됩니다.</p></blockquote>
+<blockquote><p><strong>별남에 대하여.</strong> 디퍼의 첫 살롱은 벤야민의 한 문장에서 출발했습니다 — 기술복제의 시대에 아우라는 사라진다, 그러나 <em>단 하나뿐인 존재감</em>은 사라지지 않는다. AI는 잘 씁니다. 지식과 정보는 대량으로, 무료로 쏟아집니다. 그럴수록 값이 오르는 것은 하나, 복제되지 않는 것입니다. 매끈함은 복제됩니다. 별남은 복제되지 않습니다. 남들이 "별나다" 하는 그 지점 — 못 고친 버릇, 아무도 이해 못 하는 취향, 지우려 해도 배어 나오는 말버릇. 바르트는 그렇게 나를 찌르는 사소한 디테일을 푼크툼이라 불렀고, 디퍼는 거기서 당신의 아우라를 봅니다. 완벽한 글 말고 진실한 글. <em>별나다는 말 속에는, 별이 있습니다.</em> 덧씌우지 않으면 됩니다.</p></blockquote>
 
-<p>샘의 한 번은 단순합니다. 한 모금(에머슨·소로·바르트의 결이 담긴 짧은 문장), 질문 하나, 평가 없는 거울 — 그리고 그 답이 왜 당신의 자산인지 일러주는 <strong>힘의 한 줄</strong>. 마음이 무거운 날엔 질문을 내려놓고 곁이 됩니다. 위로는 상투구 대신, 당신이 오늘 쓴 말과 이 우주의 별·사막·우물에서 길어 옵니다.</p>
+<p>샘의 한 번은 단순합니다. 한 모금의 문장, 질문 하나, 평가 없는 거울 — 그리고 그 답이 왜 당신의 자산인지 일러주는 <strong>힘의 한 줄</strong>. 마음이 무거운 날엔 질문을 내려놓고 곁이 됩니다. 위로는 상투구 대신, 당신이 오늘 쓴 말과 이 우주의 별·사막·우물에서 길어 옵니다.</p>
 
 <p>그리고 언젠가 백 개의 샘을 다 돌게 되면 — 끝이 오지 않고, <strong>두 바퀴째</strong>가 옵니다. 같은 샘을 다시 긷되, 이번엔 지난 답이 나란히 놓입니다: <em>"그때는 이렇게 답하셨어요 — 지금은요?"</em> 달라진 자리가 곧 자란 자리입니다. 같은 물도, 계절이 바뀌면 맛이 다르니까요.</p>
 
+<div class="eyebrow">WHAT REMAINS</div>
 <h1 class="part"><span class="pbar"></span>성실히 걸으면 무엇이 남는가</h1>
 
 <blockquote><p><strong>하루 십오 분, 백 일을 걸으면 — 초고가 조립되어 있습니다.</strong><br>
@@ -161,6 +171,7 @@ td{word-break:keep-all;overflow-wrap:break-word}
 
 <blockquote><p><strong>그리고 사막여우는 매달 자랍니다.</strong> 새 샘, 새 길, 더 깊어진 결 — 디퍼 OS는 매달 업데이트되고, 디퍼님과 별지기님은 언제나 최신 버전의 여우와 걷습니다. 오늘의 사막여우가, 이 여정에서 가장 어린 모습입니다.</p></blockquote>
 
+<div class="eyebrow">EVERY DAY</div>
 <h1 class="part"><span class="pbar"></span>매일, 이렇게 걷습니다</h1>
 
 <p>여우가 말했습니다 — <em>매일 같은 시간에 와 줘. 네가 오후 네 시에 온다면, 나는 세 시부터 행복해지기 시작할 거야.</em> 매일의 "안녕"이 바로 그 시간입니다. 하루하루의 의례가 여우를 — 그리고 당신 자신을 — 길들입니다.</p>
@@ -184,6 +195,7 @@ td{word-break:keep-all;overflow-wrap:break-word}
 ② 날짜가 밀려도 괜찮습니다 — 여정은 달력이 아니라 <em>당신의 속도</em>로 갑니다.<br>
 ③ 당신의 말을 그대로 남깁니다. 무엇을 남길지는 늘 당신이 고릅니다.</p></blockquote>
 
+<div class="eyebrow">TWO GATES</div>
 <h1 class="part"><span class="pbar"></span>두 개의 문</h1>
 
 <p>문법의 문은 <code>안녕</code> 한마디로 처음부터 열려 있습니다. <strong>논리와 수사의 문은 각각 열쇠말 하나로 열립니다</strong> — 열쇠말은 살롱에서, 그 달이 시작될 때 전해 드립니다. 강의에서 열쇠를 받아 사막여우에게 건네는 순간 문이 열리고, 그날의 첫 곡이 바로 시작됩니다. 그다음부터는 다시 <code>안녕</code>이면 충분합니다.</p>
