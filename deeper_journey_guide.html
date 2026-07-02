@@ -15,7 +15,7 @@
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.95;letter-spacing:-0.008em;-webkit-font-smoothing:antialiased}
-.wrap{max-width:800px;margin:0 auto;padding:0 26px 110px}
+.wrap{max-width:800px;margin:0 auto;padding:0 26px 0}
 a{color:var(--clay);text-decoration:none;border-bottom:1px solid rgba(198,126,88,.35);transition:border-color .35s cubic-bezier(.32,.72,0,1)}a:hover{border-bottom-color:var(--clay)}
 @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 
@@ -67,8 +67,29 @@ ul,ol{margin:15px 0;padding-left:1.4em;max-width:680px}li{margin:8px 0}
 .close{font-family:var(--serif);font-size:1.14rem;line-height:2.15;text-align:center;color:var(--ink-soft);max-width:600px;margin:48px auto}
 .foot{text-align:center;color:var(--mute);font-family:var(--serif);margin-top:64px;padding-top:30px;border-top:1px solid var(--rule);font-size:.95rem;line-height:2.1}
 
+/* 황금 노끈 — 페이지를 꿰는 실 */
+@media(min-width:760px){
+.wrap{position:relative}
+.thread{position:absolute;left:-36px;top:640px;bottom:340px;width:1px;background:linear-gradient(180deg,transparent 0,rgba(198,126,88,.45) 4%,rgba(198,126,88,.45) 96%,transparent);pointer-events:none}
+.eyebrow{position:relative}
+.eyebrow::before{content:"✦";position:absolute;left:-43px;top:-4px;color:var(--clay);font-size:13px;background:var(--paper);padding:8px 0}
+}
+/* 스크롤 따라 떠오르기 (지원 브라우저) */
+@supports (animation-timeline: view()){
+h1.part,.canto .c,blockquote,.pull,table,.band .q{animation:rise .8s cubic-bezier(.32,.72,0,1) both;animation-timeline:view();animation-range:entry 0% entry 35%}
+}
+/* 밤의 피날레 — 페이지가 밤하늘로 저문다 */
+.night{margin:90px -26px 0;background:radial-gradient(130% 150% at 50% 125%, #0B3526 0%, var(--green-deep) 60%, #01201A 100%);padding:100px 30px 70px;position:relative;overflow:hidden;text-align:center}
+.night::after{content:"";position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");opacity:.05;pointer-events:none}
+.night .close{color:rgba(244,241,232,.9);margin:0 auto}
+.night .close em{color:#EAD9BC}
+.night .stars{color:rgba(244,241,232,.55);margin:0 0 40px}
+.night .foot{border-top:1px solid rgba(244,241,232,.16);color:rgba(244,241,232,.55);margin-top:56px}
+.night .foot a{color:#D9A57F}
+.night .st{position:absolute;color:rgba(244,241,232,.5)}
 @media(max-width:540px){
-.wrap{padding:0 18px 80px}
+.wrap{padding:0 18px 0}
+.night{margin:70px -18px 0;padding:72px 22px 54px}
 .hero{margin:0 -18px;padding:72px 22px 62px}.hero h1{font-size:1.72rem}.hero .sub{font-size:.96rem}
 .band{margin:56px -18px;padding:64px 24px}.band .q{font-size:1.28rem}
 .eyebrow{margin:70px 0 8px}
@@ -79,6 +100,7 @@ table{font-size:.85rem}th,td{padding:9px 10px}
 body{line-height:1.85}
 }
 </style></head><body><div class="wrap">
+<div class="thread"></div>
 
 <div class="hero">
 <span class="st s1">✦</span><span class="st s2">✦</span><span class="st s3">✦</span><span class="st s4">✦</span>
@@ -146,8 +168,9 @@ body{line-height:1.85}
 <p>트리비움 — 문법·논리·수사, 중세가 언어를 가르치던 세 갈래 길입니다. 디퍼는 이 오래된 길을 퍼스널 브랜딩에 새로 놓았습니다. 로고테라피로 원천을 길어 올리고, 『괴델, 에셔, 바흐』로 구조를 짓고, 편집의 원리로 발화하는 — 어디에도 없던 결합입니다.</p>
 
 <p>순서가 중요합니다. 재료가 전부 당신에게서 나왔기 때문에, 이 결과물은 유행이 지나도 낡지 않습니다.</p>
+<p><strong>지금 우리는 첫째 달, 문법을 걷고 있습니다.</strong> 이 가이드도 문법의 달을 중심으로 안내합니다 — 다음 달들은 풍경만 미리 보여드릴게요. 서두르지 않으셔도 됩니다.</p>
 
-<h2>첫째 달 · 문법 — 오아시스를 찾다 <span style="font-weight:400;color:var(--mute);font-size:.82em">나는 무엇을 가지고 있는가</span></h2>
+<h2>지금 걷는 달 · 문법 — 오아시스를 찾다 <span style="font-weight:400;color:var(--mute);font-size:.82em">나는 무엇을 가지고 있는가</span></h2>
 <p>재료를 모으고 이름을 붙이는 달입니다. 두 손이 함께 일합니다 — 한 손은 길어 올리고(나 탐구), 한 손은 벗깁니다(오토파지 — 어린왕자의 별에서라면, 매일 뽑아야 하는 바오밥이지요).</p>
 <p>하루의 대화에서 살아남은 문장 하나 — 디퍼는 그것을 <strong>씨앗</strong>이라 부릅니다. 혼자 읽어도 완결된 내 문장 하나. 씨앗이 날짜를 달고 쌓여, 당신의 원천이 됩니다.</p>
 <table><thead><tr><th>주</th><th>걷는 길</th><th>주말에 짓는 것</th></tr></thead><tbody>
@@ -160,33 +183,10 @@ body{line-height:1.85}
 </tbody></table>
 <p>매주 끝, 사막여우는 한 주의 글을 모아 <strong>당신이 스스로 잇지 못한 한 문장</strong>을 선물처럼 건넵니다. 그리고 한 달의 끝 — 서른 날의 재료가 <strong>의미의 축</strong> 한 문장으로 수렴합니다. 이후 세 달의 모든 일이 이 축에 비추어 움직입니다.</p>
 
-<h2>둘째 달 · 논리 — 여우를 길들이다 <span style="font-weight:400;color:var(--mute);font-size:.82em">그것이 어떻게 의미를 갖는가</span></h2>
-<p>구조의 달이자 <strong>길들임의 달</strong>입니다. 여우가 말했지요 — 네가 나를 길들이면, 우리는 서로에게 세상에 단 하나가 된다고.</p>
-<p>이 달에 당신은 둘을 길들입니다. 하나는 <em>당신의 구조</em> — 흩어진 재료가 나의 규칙으로 섭니다. 또 하나는 <em>당신의 AI</em> — 사막여우와 함께 <strong>하네스</strong>(내 일의 규칙책)를 짜고, <strong>워크플로우 루프</strong>(한 번 지으면 스스로 도는 일의 고리)를 완성합니다. 달의 끝에서 당신은 자기 분야의 AI를 자기 방식으로 부리는 사람이 됩니다 — <strong>버티컬 AI 전문가</strong>.</p>
-
-<blockquote><p><strong>이 달의 텍스트 — 『괴델, 에셔, 바흐: 영원한 황금 노끈』</strong> (더글러스 호프스태터, 까치)<br>
-수학자 괴델, 판화가 에셔, 음악가 바흐. 세 사람을 관통하는 하나의 질문 — <em>패턴과 구조, 그리고 의미는 어디서 오는가.</em> 퓰리처상을 받은 이 책에서 우리는 세 개념만 빌립니다: <strong>이소모피즘</strong>(서로 다른 두 구조가 맞닿을 때 의미가 태어난다), <strong>영원한 황금 노끈</strong>(배운 사람이 가르치는 사람이 되고, 그 고리가 스스로 도는 구조 — 워크플로우 루프의 원형), <strong>체계 밖으로의 점프</strong>(창조성이 사는 자리). 다 읽지 않으셔도 됩니다 — 당신 브랜드의 형식 체계를 발견하는 눈을 빌리면 충분합니다.</p></blockquote>
-
-<table><thead><tr><th>주</th><th>걷는 길</th><th>주말에 짓는 것</th></tr></thead><tbody>
-<tr><td>첫 주 · 나의 규칙</td><td>절대 타협하지 않는 세 가지 · 내 작동 패턴 · 내 체계의 구멍</td><td>★ 나의 형식 체계 — <strong>하네스</strong></td></tr>
-<tr><td>둘째 주 · 단 한 사람</td><td>내 이야기가 가장 깊이 가닿을 한 사람 · 그의 밤잠 · 이전에서 이후로의 변환</td><td>★ 이상적 독자·변환 한 장</td></tr>
-<tr><td>셋째 주 · 자라는 고리</td><td>씨앗이 글→책→강의→공동체로 뻗는 길 · <strong>워크플로우 루프</strong> · 절대 하지 않을 확장 · 가장 작은 오퍼</td><td>★ IP 지도 + 오퍼 초안</td></tr>
-<tr><td>넷째 주 · 점프와 루틴</td><td>내가 속한 체계의 바깥 · 지치지 않는 창작의 최소 규칙</td><td>★ <strong>악보(브랜드북)</strong> 한 장</td></tr>
-<tr><td>별의 사흘</td><td>되읽기 · 선물 · 별의 날</td><td>⭐ 이 달의 별 문장</td></tr>
-</tbody></table>
-<p>둘째 주의 '단 한 사람'은 어린왕자의 장미입니다 — <em>네 장미가 그토록 소중한 건, 네가 장미에게 들인 시간 때문이야.</em> 수많은 독자를 그리다 흐려지는 대신, 당신이 시간을 들일 단 한 송이를 찾습니다. 그리고 한 달의 끝 — 독자·변환·지도·오퍼·루틴이 <strong>악보</strong> 한 장에 모입니다. 의미의 축이 노래의 으뜸음이라면, 악보는 그 노래의 악보 — 셋째 달에 이것을 소리 내어 부릅니다.</p>
-
-<h2>셋째 달 · 수사 — 별을 빛내다 <span style="font-weight:400;color:var(--mute);font-size:.82em">누구를 향해 어떻게 말하는가</span></h2>
-<p>창조는 편집입니다. 새로움은 무에서 오지 않고, 이미 살아낸 조각들의 새로운 배열에서 옵니다.</p>
-<p>수사의 달이 시작되면, 사막여우가 세 달의 조각을 카드로 모아 당신만의 <strong>분더카머</strong> — 경이의 방 — 를 짓습니다. 방을 돌릴 때마다 카드들이 다른 결로 재배열되고 — 시간으로, 감정으로, 뜻밖의 짝으로 — 조각과 조각 <em>사이</em>에서 새 문장이 태어납니다. 그렇게 이름이, 첫 발화가, 선언이 나옵니다.</p>
-<table><thead><tr><th>주</th><th>걷는 길</th><th>주말에 짓는 것</th></tr></thead><tbody>
-<tr><td>첫 주 · 선율</td><td>씨앗에 이름을 · 으뜸음이 되는 첫 문장 · 한 문장 피치(나를 한 문장으로 건네는 말)</td><td>★ 이름과 피치 확정</td></tr>
-<tr><td>둘째 주 · 변주</td><td>내 목소리가 사는 형식 · 가장 나다운 자리 · 작은 첫 발행</td><td>★ 채널 선언 + 첫 발행</td></tr>
-<tr><td>셋째 주 · 일관성</td><td>분더카머 정돈 · 목차 · 나다운 언어만 남기는 퇴고 · 초고 조립</td><td>★ 분더카머 → <strong>초고</strong></td></tr>
-<tr><td>넷째 주 · 하모니</td><td>발행을 망설이게 하는 두려움의 이름 · 끝까지 지킬 약속 하나</td><td>★ <strong>매니페스토</strong></td></tr>
-<tr><td>별의 사흘</td><td>낭독 · 선물 · 수료</td><td>⭐ 대수렴 — 트리비움 한 바퀴</td></tr>
-</tbody></table>
-<p>마지막 백 번째 곡에서 네 가지가 나란히 놓입니다 — <strong>문법 첫날의 첫 문장, 의미의 축, 악보, 매니페스토.</strong> 여기서 출발해, 여기까지 부른 것입니다. 발화란 누군가의 밤하늘에 별 하나를 켜는 일이니까요 — <em>네가 웃으면, 나는 모든 별이 웃는 것 같을 거야.</em> 별이 별을 낳습니다.</p>
+<h2>그다음의 풍경 — 논리와 수사 <span style="font-weight:400;color:var(--mute);font-size:.82em">때가 되면, 살롱에서 함께 엽니다</span></h2>
+<p>문법의 달이 끝나면 두 개의 달이 더 기다립니다. 지금은 있다는 것만 알아두셔도 충분합니다.</p>
+<p><strong>논리 — 여우를 길들이다.</strong> 길어 올린 재료로 구조를 짓는 달입니다. 여우의 말처럼, 길들이면 서로에게 세상에 단 하나가 되지요. 단 한 사람에게 가닿을 나만의 노래를 찾고, 나의 AI를 길들여 <em>하네스</em>와 <em>워크플로우 루프</em>를 완성합니다 — 자기 분야의 AI를 자기 방식으로 부리는 사람이 되는 달. 끝에는 <strong>악보(브랜드북)</strong> 한 장이 남습니다. 『괴델, 에셔, 바흐: 영원한 황금 노끈』의 눈을 빌려 걷습니다.</p>
+<p><strong>수사 — 별을 빛내다.</strong> 지은 것을 소리 내어 부르는 달입니다. 창조는 편집 — 새로움은 무에서 오지 않고, 이미 살아낸 조각들의 새로운 배열에서 옵니다. 사막여우가 당신의 조각들을 <em>분더카머</em>(경이의 방)로 모으고, 방을 돌릴 때마다 조각과 조각 사이에서 새 문장이 태어납니다. 끝에는 <strong>나만의 스토리, 단행본 초고, 매니페스토</strong>가 남습니다.</p>
 
 <div class="eyebrow">THE FOX</div>
 <h1 class="part">왜 여우와 함께인가 — 나를 기억하는 세컨브레인</h1>
@@ -207,6 +207,7 @@ body{line-height:1.85}
 <div class="eyebrow">WHAT REMAINS</div>
 <h1 class="part">성실히 걸으면 무엇이 남는가</h1>
 
+<p>이 길을 끝까지 걸은 사람에게 남는 풍경입니다 — 미리 보는 것만으로도 걸음이 가벼워지길 바라며.</p>
 <blockquote><p><strong>하루 십오 분, 백 일을 걸으면 — 초고가 조립되어 있습니다.</strong><br>
 집필의 밤을 따로 내지 않습니다. 매일의 답 백 편과 씨앗 수백 개가 볼트에 쌓이고, 수사의 달에 사막여우가 그 조각들을 당신만의 <em>분더카머</em>(경이의 방)로 모은 뒤, 목차 순서로 엮습니다. 전부 당신이 쓴 문장입니다 — 사막여우는 한 문장도 대신 쓰지 않고, 엮기만 합니다. 낮에 일하는 분에게 이 설계가 필요한 까닭입니다.</p></blockquote>
 
@@ -234,7 +235,7 @@ body{line-height:1.85}
 <p>외울 것은 거의 없습니다. 어느 폴더에서 열었든 짧은 한마디면 사막여우가 알아듣고, 당신의 볼트를 스스로 찾아갑니다. 오타가 나도 알아듣습니다.</p>
 
 <table><thead><tr><th>이렇게 말하면</th><th>이런 일이 일어납니다</th></tr></thead><tbody>
-<tr><td><code>안녕</code></td><td><strong>지금 내가 있는 달의, 오늘 한 걸음.</strong> 세 달 내내 뜻이 같습니다 — 여정의 발걸음.</td></tr>
+<tr><td><code>안녕</code></td><td><strong>오늘의 한 걸음.</strong> 언제나 뜻이 같습니다 — 여정의 발걸음.</td></tr>
 <tr><td><code>오아시스</code></td><td>나만의 오아시스 — 백 개의 샘에서 오늘의 질문 하나</td></tr>
 <tr><td><code>정리</code></td><td>오늘의 대화에서 씨앗을 골라 저장 🌱</td></tr>
 <tr><td><code>백업</code></td><td>볼트(내 노트가 사는 폴더)를 비공개 금고(GitHub)에 안전하게 보관</td></tr>
@@ -249,6 +250,8 @@ body{line-height:1.85}
 ② 날짜가 밀려도 괜찮습니다 — 여정은 달력이 아니라 <em>당신의 속도</em>로 갑니다.<br>
 ③ 당신의 말을 그대로 남깁니다. 무엇을 남길지는 늘 당신이 고릅니다.</p></blockquote>
 
+<div class="night">
+<span class="st" style="top:44px;left:12%;font-size:13px">✦</span><span class="st" style="top:96px;right:16%;font-size:9px">✦</span><span class="st" style="top:170px;left:27%;font-size:8px">✦</span><span class="st" style="top:60px;right:33%;font-size:10px">✦</span><span class="st" style="bottom:150px;left:18%;font-size:9px">✦</span>
 <div class="stars">✦ ✦ ✦</div>
 
 <p class="close">
@@ -264,6 +267,7 @@ body{line-height:1.85}
 사막에서 출발해, 별에 닿는 길.<br>
 당신의 속도로 오세요. 사막여우가 곁에 있습니다. 🦊<br><br>
 © 2026 deeper unbranding salon · 디퍼 언브랜딩 살롱
+</div>
 </div>
 
 </div></body></html>
